@@ -1,0 +1,16 @@
+---
+- name: Installation des serveurs
+  hosts: web
+  remote_user: root
+  vars: #variable qu'on pourra se servir dans tout le reste du code
+    user: bobo
+    #domain: local.dev
+    
+
+  roles:
+    - utils
+    - user
+    - nginx
+
+
+... 

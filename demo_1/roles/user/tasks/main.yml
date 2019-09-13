@@ -1,0 +1,12 @@
+---
+- name: Création d'un remote_user
+  when: user is defined
+  user: name={{ user }} comment=comment"Mon user" shell=/usr/bin/zsh
+    
+- name: Ajout clef ssh
+  when: user is defined
+  authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}" #lookup permet de recuperer un fichier
+    
+- name: "{{ user }} devient sudoer"
+  when: user is defined
+  template: src=templates/sudoers.j2 dest=/etc/sudoers.d/{{ user }}-sudoer validate='visudo -cf %s'
