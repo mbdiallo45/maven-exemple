@@ -31,7 +31,12 @@ class Account {
   BigDecimal getBalance() {
     return balance;
   }
-
+  /**
+  * Setteur
+  */
+  public void setBalance (BigDecimal b){
+    balance = b;
+  }
   /**
    * Crédite le compte.
    * @param amount le montant à créditer
